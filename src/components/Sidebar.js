@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown';
 
 const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) => {
     
@@ -21,7 +22,7 @@ const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) 
                                 <button onClick={() => onDeleteNote(note.id)}>Delete</button>
                             </div>
 
-                            <p>{note.body && note.body.substr(0, 100) + "..."}</p>
+                            <ReactMarkdown>{note.body && note.body.substr(0, 100) + "..."}</ReactMarkdown>
 
                             <small className="note-meta">
                                 Last modified {new Date(note.lastModified).toLocaleDateString("en-IN", {
