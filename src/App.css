@@ -158,3 +158,29 @@ textarea {
     font-size: 1rem;
     line-height: 2rem;
 }
+
+
+/*! Responsive Design */
+
+
+/** Mobile Phones */
+
+@media screen and (max-width:576px) {
+    .app-sidebar-header {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+    .sidebar-note-title {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .app-sidebar-note.active {
+        padding: 10px
+    }
+    .note-meta {
+        padding-top: 10px;
+    }
+}
