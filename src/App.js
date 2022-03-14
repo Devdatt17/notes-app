@@ -1,52 +1,43 @@
 
 import React from 'react'
-import uuid from 'react-uuid'
 import './App.css';
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
-
+import {ADD_NOTE,UPDATE_NOTE,DELETE_NOTE} from './redux/action'
+import {useDispatch, useSelector} from 'react-redux'
 function App() {
-  
-  const [notes,setNotes] = React.useState([]);
+  const dispatch = useDispatch()
+  const viewNote = useSelector(state=>state)
   const [activeNote,setActiveNote]=React.useState(false);
 
   const onAddNotes = ()=>{
-
-      const newNote = {
-        id: uuid(),
-        title: "Untitled Note",
-        body:"",
-        lastModified:Date.now(),
-      }
-
-      setNotes([newNote, ...notes]);
+      dispatch(ADD_NOTE())
   };
 
   const onUpdateNote=(onUpdateNote)=>{
-      const updatedNotesArray = notes.map((note)=>{
+      const updatedNotesArray = viewNote.map((note)=>{
         if(note.id === activeNote){
           return onUpdateNote;
         }
-
         return note;
       })
-      setNotes(updatedNotesArray)
+      dispatch(UPDATE_NOTE(updatedNotesArray))
   }
 
   const onDeleteNote = (idToDelete)=>{
     //? notes are filtered such that only the notes with id same as that of those passed form 
     //? delete event in sidebar are only rendered.
-      setNotes(notes.filter((note)=>note.id !== idToDelete));
+    dispatch(DELETE_NOTE(idToDelete))
   };
 
   const getActiveNote = ()=>{
-    return notes.find((note)=>note.id === activeNote);
+    return viewNote.find((note)=>note.id === activeNote);
   };
 
   return (
     <div className="App">
       <Sidebar 
-      notes={notes}
+      notes={viewNote}
       onAddNotes={onAddNotes}
       onDeleteNote={onDeleteNote}
       activeNote={activeNote}
