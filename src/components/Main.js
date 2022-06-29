@@ -25,7 +25,7 @@ const Main = ({ activeNote ,onUpdateNote}) => {
                 <textarea
                 id="body"
                 placeholder="Write the notes here....."
-                value={activeNote.body}
+                value={activeNote.message}
                 onChange={(e)=>onEditField('body',e.target.value)}
                 ></textarea>               
             </div>
