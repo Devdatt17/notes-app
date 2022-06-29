@@ -5,7 +5,7 @@ export default function reducer(STATE = [], action) {
             const newNote = {
                 id: uuid(),
                 title: "Untitled Note",
-                body: "",
+                message: "",
                 lastModified: Date.now(),
             }
             return [...STATE, newNote]
