@@ -22,7 +22,7 @@ const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) 
                                 <button onClick={() => onDeleteNote(note.id)}>Delete</button>
                             </div>
 
-                            <ReactMarkdown>{note.body && note.body.substr(0, 100) + "..."}</ReactMarkdown>
+                            <ReactMarkdown>{note.message && note.message.substr(0, 100) + "..."}</ReactMarkdown>
 
                             <small className="note-meta">
                                 Last modified {new Date(note.lastModified).toLocaleDateString("en-IN", {

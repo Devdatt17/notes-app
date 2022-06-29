@@ -25,13 +25,13 @@ const Main = ({ activeNote ,onUpdateNote}) => {
                 <textarea
                 id="body"
                 placeholder="Write the notes here....."
-                value={activeNote.body}
+                value={activeNote.message}
                 onChange={(e)=>onEditField('body',e.target.value)}
                 ></textarea>               
             </div>
             <div className="app-main-note-preview">
                 <h1 className="preview-title">{activeNote.title}</h1>
-                <ReactMarkdown className="markdown-preview">{ activeNote.body }</ReactMarkdown>
+                <ReactMarkdown className="markdown-preview">{ activeNote.message }</ReactMarkdown>
             </div>
         </div>
     )
