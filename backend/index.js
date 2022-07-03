@@ -6,7 +6,7 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 //Database configuration
 dotenv.config()
