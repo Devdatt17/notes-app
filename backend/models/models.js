@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const dataSchema = mongoose.Schema({
-    id: {
+    _id: {
         required: true,
         type: String
     },
@@ -12,7 +12,7 @@ const dataSchema = mongoose.Schema({
         required: true,
         type: String
     },
-    lastDateModified: {
+    lastModified: {
         required: true,
         type: Date
     }
