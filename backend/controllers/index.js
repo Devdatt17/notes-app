@@ -10,9 +10,9 @@ const displayAllNotes = async (req,res)=>{
 //Added new note
 const addNewNotes = async(req,res)=>{
     const data = new Models({
-        id: uuidv4(),
         ...req.body,
-        lastModified : Date.now()
+        lastModified : Date.now(),
+        _id: uuidv4()
     })
     
     await data.save()
@@ -38,7 +38,7 @@ const updateSingleNote = async (req,res)=>{
 
 //Delete single note
 const deleteSingleNote = async (req,res)=>{
-    const {} =  req.params
+    const { id } =  req.params
     await Models.findByIdAndDelete(id)
     res.send(`Note with id ${req.params.id} is deleted`)
 }
