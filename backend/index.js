@@ -3,8 +3,25 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const routers = require('./routes/index')
 const app = express()
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
 const PORT = 5000 || process.env.PORT;
+
+//Database configuration
+dotenv.config()
+
+const mongoDBConnection = process.env.DATABASE_URL
+mongoose.connect(mongoDBConnection)
+const database  = mongoose.connection
+
+database.on('error',(error)=>{
+    console.log(error)
+})
+
+database.once('connected',()=>{
+    console.log(`DATABASE CONNECTION SUCESSFUL`)
+})
 
 //Middlewares
 app.use(cors())
