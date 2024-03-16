@@ -14,12 +14,13 @@ const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) 
             <div className="app-sidebar-notes">
                 {
                     soretdNotes.map((note) => (
-                        <div className={`app-sidebar-note ${note.id === activeNote && "active"}`}
-                            onClick={() => setActiveNote(note.id)}
+                        <div className={`app-sidebar-note ${note._id === activeNote && "active"}`}
+                            onClick={() => setActiveNote(note._id)}
+                            key={note._id}
                         >
                             <div className="sidebar-note-title">
                                 <strong>{note.title}</strong>
-                                <button onClick={() => onDeleteNote(note.id)}>Delete</button>
+                                <button onClick={() => onDeleteNote(note._id)}>Delete</button>
                             </div>
 
                             <ReactMarkdown>{note.message && note.message.substr(0, 100) + "..."}</ReactMarkdown>
@@ -33,7 +34,6 @@ const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) 
                         </div>
                     ))
                 }
-
             </div>
         </div>
     )
