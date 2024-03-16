@@ -8,7 +8,8 @@ export default function reducer(STATE = [], action) {
                 message: "",
                 lastModified: Date.now(),
             }
-            return [...STATE, newNote]
+            STATE.unshift(newNote)
+            return [...STATE]
 
         case "UPDATE_NOTE":
             return action.payload
