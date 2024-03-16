@@ -1,8 +1,9 @@
 import axios from 'axios'
+import 'dotenv/config'
 
 export const VIEW_NOTE = () => async dispatch => {
     try{
-        const res = await axios.get(`https://notes-app-backend-devdatt17s-projects.vercel.app/`)
+        const res = await axios.get(process.env.REACT_APP_BACKED_PROD_URL)
         dispatch( {
             type: "VIEW_NOTE",
             payload: res.data
