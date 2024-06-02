@@ -18,20 +18,20 @@ const Main = ({ activeNote ,onUpdateNote}) => {
                 <input 
                 type="text" 
                 id="title" 
-                value={activeNote.title} 
+                value={activeNote.title || 'Untitled Note'} 
                 onChange={(e)=>onEditField('title',e.target.value)} 
                 autoFocus
                 />
                 <textarea
-                id="body"
+                id="message"
                 placeholder="Write the notes here....."
-                value={activeNote.body}
-                onChange={(e)=>onEditField('body',e.target.value)}
+                value={activeNote.message}
+                onChange={(e)=>onEditField('message',e.target.value)}
                 ></textarea>               
             </div>
             <div className="app-main-note-preview">
-                <h1 className="preview-title">{activeNote.title}</h1>
-                <ReactMarkdown className="markdown-preview">{ activeNote.body }</ReactMarkdown>
+                <h1 className="preview-title">{activeNote.title || 'Untitled Note'}</h1>
+                <ReactMarkdown className="markdown-preview">{ activeNote.message }</ReactMarkdown>
             </div>
         </div>
     )
