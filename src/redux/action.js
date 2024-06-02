@@ -1,5 +1,4 @@
 import axios from 'axios'
-import 'dotenv/config'
 
 export const VIEW_NOTE = () => async dispatch => {
     try{
