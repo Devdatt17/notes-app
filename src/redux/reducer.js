@@ -1,18 +1,14 @@
-import uuid from "react-uuid"
 export default function reducer(STATE = [], action) {
     switch (action.type) {
         case "ADD_NOTE":
-            const newNote = {
-                _id: uuid(),
-                title: "Untitled Note",
-                message: "",
-                lastModified: Date.now(),
-            }
-            STATE.unshift(newNote)
+            STATE.unshift(action.payload)
             return [...STATE]
 
         case "UPDATE_NOTE":
-            return action.payload
+            STATE.map((note,index) => {
+                return note._id === action.payload._id ? STATE[index] = action.payload : note
+            })
+            return [...STATE]
 
         case "DELETE_NOTE":
             return STATE.filter(note => note._id !== action.payload)

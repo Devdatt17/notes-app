@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar'
 import Main from './components/Main'
 import {VIEW_NOTE,ADD_NOTE,UPDATE_NOTE,DELETE_NOTE} from './redux/action'
 import {useDispatch, useSelector} from 'react-redux'
+
 function App() {
   const dispatch = useDispatch()
   const viewNote = useSelector(state=>state)
@@ -13,18 +14,12 @@ function App() {
     dispatch(VIEW_NOTE())
   },[dispatch])
 
-  const onAddNotes = ()=>{
-      dispatch(ADD_NOTE())
+  const onAddNotes = (id)=>{
+      dispatch(ADD_NOTE(id))
   };
 
   const onUpdateNote=(onUpdateNote)=>{
-      const updatedNotesArray = viewNote.map((note)=>{
-        if(note._id === activeNote){
-          return onUpdateNote;
-        }
-        return note;
-      })
-      dispatch(UPDATE_NOTE(updatedNotesArray))
+      dispatch(UPDATE_NOTE(onUpdateNote))
   }
 
   const onDeleteNote = (idToDelete)=>{
@@ -34,7 +29,7 @@ function App() {
   };
 
   const getActiveNote = ()=>{
-    return viewNote.find((note)=>note._id === activeNote);
+    return viewNote?.find((note)=>note._id === activeNote);
   };
 
   return (

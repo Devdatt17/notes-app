@@ -2,6 +2,15 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown';
 
 const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) => {
+
+    const generateNoteId = Math.random().toString().substr(2, 6) || ''
+
+    const newNoteFormat = {
+        _id: generateNoteId || '',
+        title: "Untitled Note",
+        message: "",
+        lastModified: Date.now(),
+    }
     
     const soretdNotes = notes.sort((a,b)=> b.lastModified - a.lastModified)
 
@@ -9,7 +18,7 @@ const Sidebar = ({ notes,onAddNotes, onDeleteNote, setActiveNote, activeNote }) 
         <div className="app-sidebar">
             <div className="app-sidebar-header">
                 <h1>Dev's Notes</h1>
-                <button onClick={onAddNotes}>Add</button>
+                <button onClick={() => onAddNotes(newNoteFormat)}>Add</button>
             </div>
             <div className="app-sidebar-notes">
                 {
